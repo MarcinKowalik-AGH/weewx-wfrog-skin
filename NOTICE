@@ -29,16 +29,15 @@ WeeWX is a separate project. This repository is an independent skin and chart
 generator intended to run with WeeWX. It does not claim ownership of WeeWX and
 does not bundle WeeWX source code.
 
-Logo / frog artwork
--------------------
+Artwork
+-------
 
-The frog-under-umbrella artwork in skins/Wfrog/frog_umbrella.png was supplied
-to this project as the classic wFrog artwork and is included for interface
-compatibility. The current upstream wFrog GitHub repository clearly documents
-the GPL license for its source code, but an independent asset-specific license
-statement for this particular historical image was not located during project
-preparation.
+The public repository uses skins/Wfrog/frog_umbrella.svg, a new simple icon
+created for this WeeWX port:
 
-The image is NOT claimed as an original work of Marcin Kowalik. If you require
-strict asset-level provenance for redistribution, replace or remove the image
-while retaining the software license and source-code attributions above.
+    Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+    SPDX-License-Identifier: GPL-3.0-or-later
+
+The historical wFrog image used during private development is not redistributed
+here because a separate asset-specific licensing statement was not located.
+Original wFrog software attribution remains preserved above.
