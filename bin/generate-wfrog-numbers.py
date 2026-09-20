@@ -309,9 +309,7 @@ def generate():
         lines.extend(weather_table(prefix, keys, wg))
 
         (OUT / f'{prefix}numbers_wfrog.txt').write_text(
-            '
-'.join(lines) + '
-',
+            "\\n".join(lines) + "\\n",
             encoding='utf-8',
         )
 
