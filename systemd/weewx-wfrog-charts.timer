@@ -1,0 +1,15 @@
+# WeeWX wFrog Skin
+# Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=Refresh WeeWX wFrog charts
+
+[Timer]
+OnBootSec=45s
+OnUnitInactiveSec=60s
+AccuracySec=2s
+Persistent=true
+
+[Install]
+WantedBy=timers.target
