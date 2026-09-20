@@ -32,12 +32,12 @@ does not bundle WeeWX source code.
 Artwork
 -------
 
-The public repository uses skins/Wfrog/frog_umbrella.svg, a new simple icon
-created for this WeeWX port:
+The public skin includes skins/Wfrog/frog_umbrella.png copied verbatim from
+the original wfrog/wfrog repository:
 
-    Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
-    SPDX-License-Identifier: GPL-3.0-or-later
+    upstream path: wfrender/config/logo.png
+    upstream blob SHA: c9a30d970fd89a3ba8789745c4acf1ea360272a4
 
-The historical wFrog image used during private development is not redistributed
-here because a separate asset-specific licensing statement was not located.
-Original wFrog software attribution remains preserved above.
+The image is not claimed as an original work of Marcin Kowalik. It is
+redistributed with the original wFrog attribution and GPL-3.0-or-later
+licensing context documented above.
