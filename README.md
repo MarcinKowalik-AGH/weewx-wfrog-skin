@@ -148,7 +148,7 @@ sudo REMOVE_HTML=1 ./uninstall.sh
 
 ## Artwork
 
-The public repository uses a new, simple frog-under-umbrella SVG created for this WeeWX port and licensed with the project. The historical wFrog artwork used during private development is not redistributed here. See `ASSET-NOTICE.md`.
+The repository uses the original `wfrender/config/logo.png` asset from the upstream `wfrog/wfrog` repository. Its upstream blob SHA is `c9a30d970fd89a3ba8789745c4acf1ea360272a4`. The file is redistributed here under the same GPL-3.0-or-later project licensing and attribution context as the upstream wFrog repository. See `ASSET-NOTICE.md`.
 
 ## License
 
