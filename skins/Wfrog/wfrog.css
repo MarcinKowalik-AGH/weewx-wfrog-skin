@@ -1,0 +1,45 @@
+/*
+ * WeeWX wFrog Skin
+ * Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+ * Visual design intentionally recalls classic wFrog.
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+html,body{margin:0;padding:0;background:#fff}
+body{font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8d7641}
+a{color:#8d7641;text-decoration:none}
+a:hover{text-decoration:underline}
+.wf-page{width:98%;max-width:1120px;margin:4px 0 20px 3px}
+.wf-bordered,.wf-cell,.wf-graph{border:1px solid #d2b48c}
+.wf-topbar{min-height:19px;margin:3px;padding:4px 7px;display:flex;justify-content:space-between;align-items:flex-start}
+.wf-header-title{white-space:nowrap;color:#8d7641}
+.wf-value{color:#007000;font-weight:600}
+.wf-unit,.wf-units{color:#8d7641;font-weight:normal}
+.wf-current-strip{display:flex;flex-wrap:wrap;align-items:stretch}
+.wf-cell{margin:3px;padding:7px;background:#fff;box-sizing:border-box;min-height:92px}
+.wf-logo-cell{width:130px;display:flex;align-items:center;justify-content:center;padding:4px 6px;overflow:hidden}
+.wf-logo-cell img{display:block;max-width:112px;max-height:86px;width:auto;height:auto;object-fit:contain;margin:0 auto}
+.wf-summary-cell{width:205px;display:block}
+.wf-summary-body{display:flex;justify-content:space-between;gap:7px}
+.wf-summary-out{min-width:122px}
+.wf-summary-in{min-width:58px;text-align:right}
+.wf-house{display:block;color:#c7af80;font-size:23px;line-height:20px;text-align:center;margin:-2px 0 4px 0}
+.wf-wind-cell{width:230px;display:block}
+.wf-wind-body{display:flex;align-items:center;gap:5px}
+.wf-wind-body img{display:block;width:76px;height:76px;flex:0 0 76px}
+.wf-box-title{display:flex;justify-content:space-between;align-items:center;min-height:16px;margin:-2px 0 4px 0;padding-bottom:3px;border-bottom:1px solid #eadbc3;color:#8d7641;font-weight:bold;font-size:11px}
+.wf-box-source{color:#a08b5b;font-size:9px;font-weight:normal;letter-spacing:.25px}
+.wf-line{padding:2px 1px;white-space:nowrap}
+.wf-big{font-size:140%}
+.wf-tabpane{width:calc(100% - 8px);margin:3px;padding-top:3px;min-height:23px;clear:both;border-bottom:1px solid #d2b48c;display:flex;align-items:flex-end}
+.wf-tab{height:22px;margin:0 3px -1px 0;padding:2px 8px;border:0;border-bottom:1px solid #f5deb3;background:#f5deb3;color:#8d7641;font:inherit;cursor:pointer}
+.wf-tab.selected{background:#fff;border-top:1px solid #d2b48c;border-left:1px solid #d2b48c;border-right:1px solid #d2b48c;border-bottom:1px solid #fff}
+.wf-tab-spacer{flex:1}
+.wf-charts{display:grid;grid-template-columns:repeat(2,minmax(360px,1fr));align-items:start}
+.wf-graph{margin:3px;padding:4px;background:#fff;min-width:0}
+.wf-graph-head{min-height:18px;display:flex;justify-content:space-between;align-items:center;color:#8d7641}
+.wf-graph img{display:block;width:100%;height:auto}
+.wf-numbers{margin:3px;padding:0;border:1px solid #d2b48c;display:none;overflow-x:auto;background:#fff}
+.wf-details-pre{margin:0;padding:8px;color:#8d7641;background:#fff;font-family:"Courier New",Courier,monospace;font-size:94%;line-height:1.25;white-space:pre;tab-size:4}
+.wf-footer{margin:8px 3px;clear:both;font-size:11px;color:#a08b5b}
+@media(max-width:820px){.wf-charts{grid-template-columns:1fr}.wf-page{width:99%}}
+@media(max-width:700px){.wf-header-title{white-space:normal}}
