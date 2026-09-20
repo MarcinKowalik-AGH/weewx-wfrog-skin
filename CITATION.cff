@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use the WeeWX wFrog Skin, please cite the software and retain the original wFrog attribution."
+title: "WeeWX wFrog Skin"
+type: software
+authors:
+  - family-names: Kowalik
+    given-names: Marcin
+    email: mkowalik@agh.edu.pl
+version: 0.1.0
+date-released: 2026-09-20
+license: GPL-3.0-or-later
+repository-code: https://github.com/MarcinKowalik-AGH/weewx-wfrog-skin
+url: https://github.com/MarcinKowalik-AGH/weewx-wfrog-skin
+keywords:
+  - WeeWX
+  - wFrog
+  - weather station
+  - weather dashboard
+  - meteorology
+  - WH3080
