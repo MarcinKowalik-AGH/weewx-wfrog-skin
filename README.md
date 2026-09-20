@@ -148,7 +148,7 @@ sudo REMOVE_HTML=1 ./uninstall.sh
 
 ## Artwork
 
-The repository includes the classic frog-under-umbrella image used during development. It is not claimed as an original work of Marcin Kowalik. See `ASSET-NOTICE.md` for the asset-specific provenance note.
+The public repository uses a new, simple frog-under-umbrella SVG created for this WeeWX port and licensed with the project. The historical wFrog artwork used during private development is not redistributed here. See `ASSET-NOTICE.md`.
 
 ## License
 
