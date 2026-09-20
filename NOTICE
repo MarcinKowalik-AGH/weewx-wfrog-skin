@@ -1,0 +1,44 @@
+WeeWX wFrog Skin
+================
+
+Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+
+This project is a new WeeWX-oriented implementation of the visual style,
+aggregation behavior, and chart semantics of the classic wFrog project.
+
+Original wFrog attribution
+--------------------------
+
+Copyright 2009 Laurent Bovet <laurent.bovet@windmaster.ch>
+               Jordi Puigsegur <jordi.puigsegur@gmail.com>
+
+Original repository:
+    https://github.com/wfrog/wfrog
+
+The original wFrog files state that wFrog is free software distributed under
+the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+This repository is consequently distributed under GPL-3.0-or-later. See the
+LICENSE file.
+
+Relationship to WeeWX
+---------------------
+
+WeeWX is a separate project. This repository is an independent skin and chart
+generator intended to run with WeeWX. It does not claim ownership of WeeWX and
+does not bundle WeeWX source code.
+
+Logo / frog artwork
+-------------------
+
+The frog-under-umbrella artwork in skins/Wfrog/frog_umbrella.png was supplied
+to this project as the classic wFrog artwork and is included for interface
+compatibility. The current upstream wFrog GitHub repository clearly documents
+the GPL license for its source code, but an independent asset-specific license
+statement for this particular historical image was not located during project
+preparation.
+
+The image is NOT claimed as an original work of Marcin Kowalik. If you require
+strict asset-level provenance for redistribution, replace or remove the image
+while retaining the software license and source-code attributions above.
