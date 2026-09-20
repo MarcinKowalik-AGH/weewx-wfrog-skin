@@ -29,4 +29,4 @@ git push -u origin main
 git push origin v0.1.0
 ```
 
-The software preserves original wFrog attribution in `NOTICE`, `AUTHORS.md`, and the source headers. The public repository uses the GPL-licensed `skins/Wfrog/frog_umbrella.svg`; the historical private-development artwork is not redistributed.
+The software preserves original wFrog attribution in `NOTICE`, `AUTHORS.md`, and the source headers. The public repository uses `skins/Wfrog/frog_umbrella.png`, copied verbatim from upstream `wfrog/wfrog` path `wfrender/config/logo.png`.
