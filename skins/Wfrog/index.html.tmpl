@@ -1,0 +1,214 @@
+## WeeWX wFrog Skin
+## Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+## Inspired by the classic wFrog interface by Laurent Bovet and Jordi Puigsegur.
+## SPDX-License-Identifier: GPL-3.0-or-later
+#errorCatcher Echo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>WeeWX wFrog - $station.location</title>
+  <link rel="stylesheet" href="wfrog.css">
+</head>
+<body>
+<div class="wf-page">
+
+  <div class="wf-topbar wf-bordered">
+    <div class="wf-header-title">WeeWX wFrog &nbsp;·&nbsp; $station.location</div>
+    <div class="wf-value" id="wx-time">--</div>
+  </div>
+
+  <div class="wf-current-strip">
+    <div class="wf-cell wf-logo-cell">
+      <img src="frog_umbrella.png" alt="wFrog">
+    </div>
+
+    <div class="wf-cell wf-summary-cell">
+      <div class="wf-box-title">
+        <span>Weather</span><span class="wf-box-source">WEEWX</span>
+      </div>
+      <div class="wf-summary-body">
+        <div class="wf-summary-out">
+          <div class="wf-line"><span class="wf-big wf-value" id="wx-temp">--</span> <span class="wf-unit">°C</span></div>
+          <div class="wf-line">Humidity <span class="wf-value" id="wx-hum">--</span> <span class="wf-unit">%</span></div>
+          <div class="wf-line">Pressure <span class="wf-value" id="wx-pressure">--</span> <span class="wf-unit">hPa</span></div>
+        </div>
+        <div class="wf-summary-in">
+          <span class="wf-house">&#8962;</span>
+          <div class="wf-line"><span class="wf-value" id="wx-intemp">--</span> <span class="wf-unit">°C</span></div>
+          <div class="wf-line"><span class="wf-value" id="wx-inhum">--</span> <span class="wf-unit">%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wf-cell wf-wind-cell">
+      <div class="wf-box-title">
+        <span>Wind</span><span class="wf-box-source">WEEWX</span>
+      </div>
+      <div class="wf-wind-body">
+        <img id="current-wind-img" src="wind_current.svg" alt="Current wind">
+        <div>
+          <div class="wf-line">Wind <span class="wf-value" id="wx-wind">--</span> <span class="wf-unit">km/h</span></div>
+          <div class="wf-line">Gust <span class="wf-value" id="wx-gust">--</span> <span class="wf-unit">km/h</span></div>
+          <div class="wf-line">Rain <span class="wf-value" id="wx-rainrate">--</span> <span class="wf-unit">mm/h</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-tabpane">
+    <button class="wf-tab" data-prefix="threehour">3 Hours</button>
+    <button class="wf-tab selected" data-prefix="day">24 Hours</button>
+    <button class="wf-tab" data-prefix="week">7 Days</button>
+    <button class="wf-tab" data-prefix="month">30 Days</button>
+    <button class="wf-tab" data-prefix="year">365 Days</button>
+    <span class="wf-tab-spacer"></span>
+    <button class="wf-tab selected" id="show-charts">charts</button>
+    <button class="wf-tab" id="show-numbers">numbers</button>
+  </div>
+
+  <div class="wf-charts" id="charts">
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Temperature and Dew Point</span><span class="wf-units">°C</span></div>
+      <img class="period-chart" data-base="temp_wfrog" src="daytemp_wfrog.svg" alt="Temperature and Dew Point">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Humidity</span><span class="wf-units">%</span></div>
+      <img class="period-chart" data-base="humidity_wfrog" src="dayhumidity_wfrog.svg" alt="Humidity">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Pressure</span><span class="wf-units">hPa</span></div>
+      <img class="period-chart" data-base="pressure_wfrog" src="daypressure_wfrog.svg" alt="Pressure">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Wind and Gusts</span><span class="wf-units">km/h</span></div>
+      <img class="period-chart" data-base="windgust_wfrog" src="daywindgust_wfrog.svg" alt="Wind and Gusts">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Wind Direction</span><span class="wf-units"></span></div>
+      <img class="period-chart" data-base="windrose_wfrog" src="daywindrose_wfrog.svg" alt="Wind Direction">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Rain</span><span class="wf-units">mm</span></div>
+      <img class="period-chart" data-base="rain_wfrog" src="dayrain_wfrog.svg" alt="Rain">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Rain Rate</span><span class="wf-units">mm/h</span></div>
+      <img class="period-chart" data-base="rain_rate_wfrog" src="dayrain_rate_wfrog.svg" alt="Rain Rate">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>UV Index</span><span class="wf-units"></span></div>
+      <img class="period-chart" data-base="uv_wfrog" src="dayuv_wfrog.svg" alt="UV Index">
+    </div>
+
+    <div class="wf-graph">
+      <div class="wf-graph-head"><span>Solar Radiation</span><span class="wf-units">W/m²</span></div>
+      <img class="period-chart" data-base="radiation_wfrog" src="dayradiation_wfrog.svg" alt="Solar Radiation">
+    </div>
+  </div>
+
+  <div class="wf-numbers" id="numbers">
+    <pre class="wf-details-pre" id="numbers-content">Loading summary...</pre>
+  </div>
+
+  <div class="wf-footer">
+    WeeWX wFrog Skin · Marcin Kowalik · GPL-3.0-or-later
+  </div>
+</div>
+
+<script>
+(function(){
+  var currentPrefix='day';
+  var periodButtons=document.querySelectorAll('.wf-tab[data-prefix]');
+  var charts=document.querySelectorAll('.period-chart');
+  var chartsBox=document.getElementById('charts');
+  var numbersBox=document.getElementById('numbers');
+  var showCharts=document.getElementById('show-charts');
+  var showNumbers=document.getElementById('show-numbers');
+
+  function setText(id,val){var e=document.getElementById(id);if(e)e.textContent=val;}
+  function num(v,d){return(v===null||v===undefined)?'--':Number(v).toFixed(d);}
+
+  async function getJSON(url){
+    var r=await fetch(url,{cache:'no-store'});
+    if(!r.ok)throw new Error(url+' HTTP '+r.status);
+    return r.json();
+  }
+
+  function refreshChartSources(){
+    var now=Date.now();
+    charts.forEach(function(img){
+      img.src=currentPrefix+img.getAttribute('data-base')+'.svg?t='+now;
+    });
+  }
+
+  async function loadNumbers(prefix){
+    var box=document.getElementById('numbers-content');
+    try{
+      var r=await fetch(prefix+'numbers_wfrog.txt?t='+Date.now(),{cache:'no-store'});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      box.textContent=await r.text();
+    }catch(e){
+      box.textContent='Unable to load numeric summary: '+e;
+    }
+  }
+
+  async function refreshCurrent(){
+    try{
+      var w=await getJSON('weather-current.json?t='+Date.now());
+      setText('wx-time',w.timestamp_local||'--');
+      setText('wx-temp',num(w.temperature_c,1));
+      setText('wx-hum',num(w.humidity_pct,0));
+      setText('wx-pressure',num(w.pressure_hpa,1));
+      setText('wx-intemp',num(w.inside_temperature_c,1));
+      setText('wx-inhum',num(w.inside_humidity_pct,0));
+      setText('wx-wind',num(w.wind_kmh,1));
+      setText('wx-gust',num(w.gust_kmh,1));
+      setText('wx-rainrate',num(w.rain_rate_mm_h,1));
+      document.getElementById('current-wind-img').src='wind_current.svg?t='+Date.now();
+    }catch(e){
+      console.error('wFrog current-data refresh failed:',e);
+    }
+  }
+
+  periodButtons.forEach(function(button){
+    button.addEventListener('click',function(){
+      periodButtons.forEach(function(b){b.classList.remove('selected');});
+      button.classList.add('selected');
+      currentPrefix=button.getAttribute('data-prefix');
+      refreshChartSources();
+      loadNumbers(currentPrefix);
+    });
+  });
+
+  showCharts.addEventListener('click',function(){
+    chartsBox.style.display='grid';
+    numbersBox.style.display='none';
+    showCharts.classList.add('selected');
+    showNumbers.classList.remove('selected');
+  });
+
+  showNumbers.addEventListener('click',function(){
+    chartsBox.style.display='none';
+    numbersBox.style.display='block';
+    showNumbers.classList.add('selected');
+    showCharts.classList.remove('selected');
+    loadNumbers(currentPrefix);
+  });
+
+  refreshCurrent();
+  loadNumbers(currentPrefix);
+  setInterval(refreshCurrent,10000);
+  setInterval(refreshChartSources,60000);
+})();
+</script>
+</body>
+</html>
