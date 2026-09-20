@@ -1,0 +1,44 @@
+name: Publish v0.1.0
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release-v0.1.0.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure release identity
+        run: |
+          git config user.name "Marcin Kowalik"
+          git config user.email "mkowalik@agh.edu.pl"
+
+      - name: Create and push v0.1.0 tag
+        run: |
+          if git rev-parse "v0.1.0" >/dev/null 2>&1; then
+            echo "Tag v0.1.0 already exists."
+          else
+            git tag -a "v0.1.0" -m "WeeWX wFrog Skin v0.1.0"
+            git push origin "v0.1.0"
+          fi
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v0.1.0" >/dev/null 2>&1; then
+            echo "Release v0.1.0 already exists."
+          else
+            gh release create "v0.1.0"               --title "WeeWX wFrog Skin v0.1.0"               --notes-file RELEASE_NOTES.md
+          fi
