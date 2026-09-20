@@ -1,0 +1,15 @@
+# WeeWX wFrog Skin
+# Copyright (C) 2026 Marcin Kowalik <mkowalik@agh.edu.pl>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=WeeWX wFrog SVG chart and numeric-summary generator
+After=weewx.service
+
+[Service]
+Type=oneshot
+User=@WEEWX_USER@
+Group=@WEEWX_GROUP@
+EnvironmentFile=-/etc/default/weewx-wfrog
+ExecStart=/opt/weewx-wfrog/generate-wfrog-charts.py --database ${WEEWX_DB} --output ${HTML_ROOT}
+ExecStartPost=/opt/weewx-wfrog/generate-wfrog-numbers.py --database ${WEEWX_DB} --output ${HTML_ROOT}
