@@ -118,7 +118,7 @@ systemctl restart weewx 2>/dev/null || true
 systemctl start weewx-wfrog-charts.service
 
 echo
-for file in index.html wfrog.css frog_umbrella.svg weather-current.json wind_current.svg daytemp_wfrog.svg daynumbers_wfrog.txt; do
+for file in index.html wfrog.css frog_umbrella.png weather-current.json wind_current.svg daytemp_wfrog.svg daynumbers_wfrog.txt; do
     test -s "$HTML_ROOT/$file" || {
         echo "ERROR: expected file missing: $HTML_ROOT/$file"
         exit 1
