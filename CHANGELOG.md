@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.1 — 2026-09-26
+
+Maintenance release by **Marcin Kowalik <mkowalik@agh.edu.pl>**.
+
+- Refined the compact current-wind compass widget.
+- Beaufort 0 / wind below 0.3 m/s is treated as calm and no green wind arrow is drawn.
+- Reduced and re-proportioned the green arrow head.
+- Tan gust rendering now represents only the extension beyond the current-wind vector.
+- Preserved the large wheat Beaufort digit and classic wFrog compass styling.
+- GitHub Actions validation and generator smoke tests pass.
+
 ## 0.1.0 — 2026-09-20
 
 Initial public packaging by **Marcin Kowalik <mkowalik@agh.edu.pl>**.
