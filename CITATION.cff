@@ -6,8 +6,8 @@ authors:
   - family-names: Kowalik
     given-names: Marcin
     email: mkowalik@agh.edu.pl
-version: 0.1.0
-date-released: 2026-09-20
+version: 0.1.1
+date-released: 2026-09-26
 license: GPL-3.0-or-later
 repository-code: https://github.com/MarcinKowalik-AGH/weewx-wfrog-skin
 url: https://github.com/MarcinKowalik-AGH/weewx-wfrog-skin
