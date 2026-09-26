@@ -4,7 +4,7 @@ A modern **WeeWX 5.x** skin that recreates the visual style and chart logic of t
 
 **Author / maintainer:** Marcin Kowalik — <mkowalik@agh.edu.pl>  
 **License:** GPL-3.0-or-later  
-**Version:** 0.1.0
+**Version:** 0.1.1
 
 The project began as a migration of a WH3080-era home weather-station environment to WeeWX. It keeps the compact tan/wheat/green wFrog appearance while using a current Python 3 / WeeWX stack.
 
