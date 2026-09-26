@@ -551,35 +551,107 @@ def beaufort(mps):
 
 
 def current_wind_svg(latest):
-    w=h=76; cx=cy=38
+    """Render the compact current-wind compass.
+
+    ENVMON display convention:
+    - wheat digit = Beaufort force from current wind speed
+    - green shaft and arrow head = current wind
+    - thin tan extension beyond the green tip = gust
+    - Beaufort 0 (< 0.3 m/s) is treated as calm and has no green arrow
+    """
+    w = h = 76
+    cx = cy = 38
+
     if not latest:
-        write_svg("wind_current.svg",svg_text(38,41,"-",12,TEXT),w,h); return
-    wind_kmh=float(latest.get("windSpeed") or 0.0)
-    gust_kmh=float(latest.get("windGust") or wind_kmh)
-    speed=wind_kmh/3.6
-    gust=gust_kmh/3.6
-    deg=float(latest.get("windDir") or 0.0)%360.0
-    bft=beaufort(speed)
+        write_svg("wind_current.svg", svg_text(38, 41, "-", 12, TEXT), w, h)
+        return
 
-    body=""
-    for label,d in [("N",0),("NE",45),("E",90),("SE",135),("S",180),("SW",225),("W",270),("NW",315)]:
-        x,y=polar(cx,cy,31,d)
-        body += svg_text(x,y+2,label,5,"#b39a65")
+    wind_kmh_now = float(latest.get("windSpeed") or 0.0)
+    gust_kmh_now = float(latest.get("windGust") or 0.0)
 
-    body += svg_text(cx,cy+14,bft,45,WHEAT,"middle","bold")
+    speed = max(0.0, wind_kmh_now / 3.6)
+    gust = max(0.0, gust_kmh_now / 3.6)
+    gust = max(gust, speed)
 
-    if speed>0 or gust>0:
-        wind_scaled=min(5.0,wfrog_scale(speed))
-        gust_scaled=min(5.0,wfrog_scale(gust))
-        wind_len=8.0+(wind_scaled/5.0)*20.0
-        gust_len=max(wind_len,8.0+(gust_scaled/5.0)*20.0)
-        wx,wy=polar(cx,cy,wind_len,deg)
-        gx,gy=polar(cx,cy,gust_len,deg)
-        body += f'<line x1="{cx}" y1="{cy}" x2="{gx:.2f}" y2="{gy:.2f}" stroke="{TAN}" stroke-width="1.25" stroke-linecap="round"/>'
-        body += f'<line x1="{cx}" y1="{cy}" x2="{wx:.2f}" y2="{wy:.2f}" stroke="{GREEN}" stroke-width="2.5" stroke-linecap="round"/>'
-        l=polar(wx,wy,5,deg+150); r=polar(wx,wy,5,deg-150)
-        body += f'<polygon points="{wx:.2f},{wy:.2f} {l[0]:.2f},{l[1]:.2f} {r[0]:.2f},{r[1]:.2f}" fill="{GREEN}"/>'
-    write_svg("wind_current.svg",body,w,h)
+    raw_direction = latest.get("windDir")
+    have_direction = raw_direction is not None
+    deg = float(raw_direction) % 360.0 if have_direction else 0.0
+
+    bft = beaufort(speed)
+
+    # Beaufort 0 ends at 0.3 m/s in the classic scale.
+    calm_threshold_mps = 0.3
+
+    body = ""
+
+    for label, bearing in [
+        ("N", 0), ("NE", 45), ("E", 90), ("SE", 135),
+        ("S", 180), ("SW", 225), ("W", 270), ("NW", 315),
+    ]:
+        x, y = polar(cx, cy, 31, bearing)
+        body += svg_text(x, y + 2, label, 5, "#b39a65")
+
+    # Large classic wFrog-style Beaufort digit.
+    body += svg_text(cx, cy + 14, bft, 45, WHEAT, "middle", "bold")
+
+    if have_direction:
+        wind_active = speed >= calm_threshold_mps
+        gust_active = gust >= calm_threshold_mps
+
+        wind_len = 0.0
+        gust_len = 0.0
+
+        if wind_active:
+            wind_scaled = min(5.0, max(0.0, wfrog_scale(speed)))
+            wind_len = (wind_scaled / 5.0) * 27.0
+
+        if gust_active:
+            gust_scaled = min(5.0, max(0.0, wfrog_scale(gust)))
+            gust_len = (gust_scaled / 5.0) * 29.0
+
+        gust_len = max(gust_len, wind_len)
+
+        # Draw only the portion of the gust that extends beyond current wind.
+        if gust_active:
+            if wind_active:
+                gust_start_len = wind_len + 0.8
+            else:
+                gust_start_len = 2.0
+
+            if gust_len > gust_start_len + 0.5:
+                sx, sy = polar(cx, cy, gust_start_len, deg)
+                gx, gy = polar(cx, cy, gust_len, deg)
+
+                body += (
+                    f'<line x1="{sx:.2f}" y1="{sy:.2f}" '
+                    f'x2="{gx:.2f}" y2="{gy:.2f}" '
+                    f'stroke="{TAN}" stroke-width="1.15" '
+                    f'stroke-linecap="round"/>'
+                )
+
+        if wind_active and wind_len > 0.0:
+            wx, wy = polar(cx, cy, wind_len, deg)
+
+            body += (
+                f'<line x1="{cx}" y1="{cy}" '
+                f'x2="{wx:.2f}" y2="{wy:.2f}" '
+                f'stroke="{GREEN}" stroke-width="2.2" '
+                f'stroke-linecap="round"/>'
+            )
+
+            # The point wx,wy is the actual arrow tip. The base corners sit behind it.
+            arrow_size = min(4.4, max(2.4, 2.2 + wind_len * 0.07))
+            left_base = polar(wx, wy, arrow_size, deg + 150.0)
+            right_base = polar(wx, wy, arrow_size, deg - 150.0)
+
+            body += (
+                f'<polygon points="{wx:.2f},{wy:.2f} '
+                f'{left_base[0]:.2f},{left_base[1]:.2f} '
+                f'{right_base[0]:.2f},{right_base[1]:.2f}" '
+                f'fill="{GREEN}"/>'
+            )
+
+    write_svg("wind_current.svg", body, w, h)
 
 def latest_weather_json(latest):
     data={
